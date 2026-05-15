@@ -1,46 +1,34 @@
-# YAPAY ZEKA DESTEKLİ KUMAŞ ÖNERİ VE STOK TAKİP SİSTEMİ
-**(AI-Supported Fabric Recommendation and Stock Tracking System)**
+# Yapay Zeka Destekli Kumaş Yönetimi ve Stok Takip Sistemi 🧶🤖
 
-Muğla Sıtkı Koçman Üniversitesi **Bilişim Sistemleri Mühendisliği** Bölümü
+Bu proje, tekstil endüstrisindeki karar verme süreçlerini dijitalleştirmek ve optimize etmek amacıyla geliştirilmiş, hibrit bir yazılım çözümüdür.
 
----
+## 🌟 Projenin Amacı
+Tekstil üretiminde doğru kumaş seçimi ve stok yönetimi kritik bir öneme sahiptir. Bu sistem, geçmiş verileri analiz ederek yeni siparişler için en uygun kumaş önerilerini sunar ve stok durumunu yapay zeka desteğiyle takip eder.
 
-## 📖 Proje Özeti
-Bu proje, tekstil endüstrisindeki manuel karar verme süreçlerini dijitalleştirmek ve hataları minimize etmek amacıyla geliştirilmiştir. Sistem, kumaş özelliklerini analiz ederek en uygun giysi türünü **Yapay Zeka (Random Forest)** ile tahmin eder.
+## 🧠 Teknik Derinlik & Algoritma
+Projenin kalbinde **Random Forest (Rastgele Orman)** algoritması yer almaktadır.
 
-## 🚀 Temel Özellikler
+### Neden Random Forest?
+- **Ensemble Learning:** Çok sayıda karar ağacının (Decision Trees) çıktılarını birleştirerek daha kararlı ve doğru tahminler üretir.
+- **Overfitting Engelleme:** Rastgele özellik seçimi sayesinde modelin verilere aşırı uyum sağlamasını önler.
+- **Önem Derecesi:** Hangi kumaş özelliklerinin (gramaj, içerik, doku vb.) tahminde daha etkili olduğunu analiz etmemize olanak tanır.
 
-### 1. Yapay Zeka ile Kumaş Analizi
-* **Algoritma:** Random Forest (Rastgele Orman)
-* **Başarı Oranı:** %79.5 Doğruluk
-* **İşlev:** Kumaşın gramaj ve hammadde verisine göre "Pantolonluk", "Gömleklik" gibi öneriler sunar.
-
-### 2. Akıllı Stok Yönetimi
-* Depodaki kumaş metrajından kaç adet ürün çıkacağını otomatik hesaplar.
-* Örnek: *100 metre kumaştan -> 55 adet Pantolon üretilebilir.*
-
-### 3. Veri Güvenliği
-* "Önce Kaydet, Sonra İşle" prensibi ile elektrik kesilse bile veri kaybı olmaz.
-
----
+### Model Performansı
+Model, `kumas_verisi_1000.xlsx` veri seti üzerinden eğitilmiş ve çapraz doğrulama (cross-validation) yöntemleriyle optimize edilmiştir.
 
 ## 🛠️ Kullanılan Teknolojiler
-* **Arayüz:** C# (Windows Forms)
-* **Yapay Zeka:** Python (Scikit-learn)
-* **Veritabanı:** SQLite
-* **Araçlar:** Visual Studio 2022
+- **Backend (ML):** Python, Scikit-learn, Pandas, NumPy
+- **Frontend / UI:** C# Windows Forms (.NET Core)
+- **Veritabanı:** SQLite (Hızlı ve taşınabilir veri yönetimi)
+- **Entegrasyon:** Python scriptleri, C# uygulaması üzerinden dinamik olarak tetiklenerek tahmin sonuçlarını arayüze döner.
 
----
+## 📋 Özellikler
+- ✅ **Akıllı Öneri:** Sipariş detaylarına göre en uygun kumaş türünü tahmin etme.
+- ✅ **Stok Takibi:** Gerçek zamanlı stok giriş-çıkış yönetimi.
+- ✅ **Veri Görselleştirme:** Stok ve tahmin sonuçlarının raporlanması.
+- ✅ **Hata Analizi:** Manuel süreçlerdeki insan hatasını minimize eden doğrulama katmanı.
 
-## ⚙️ Nasıl Çalışır?
-1. **Veri Girişi:** Kullanıcı kumaş bilgilerini girer.
-2. **Kayıt:** Veriler veritabanına kaydedilir.
-3. **Analiz:** Python arka planda çalışır ve tahmin yapar.
-4. **Sonuç:** Tahmin sonucu ve güven skoru ekrana yansır.
-
----
-
-## 📬 İletişim
-**Geliştirici:** [Adın Soyadın]
-**Bölüm:** Bilişim Sistemleri Mühendisliği
-**Üniversite:** Muğla Sıtkı Koçman Üniversitesi
+## 🚀 Kurulum ve Çalıştırma
+1. Gerekli Python kütüphanelerini yükleyin: `pip install scikit-learn pandas openpyxl`
+2. SQLite veritabanını kontrol edin.
+3. C# projesini Visual Studio üzerinden derleyip çalıştırın.
