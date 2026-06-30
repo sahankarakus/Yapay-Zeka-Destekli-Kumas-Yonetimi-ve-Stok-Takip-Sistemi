@@ -1,0 +1,151 @@
+.empty, .loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 48px 24px;
+  text-align: center;
+  min-height: 220px;
+  color: var(--on-surface-variant);
+}
+.emptyIcon  { font-size: 2.5rem; line-height: 1; color: var(--outline-variant); }
+.emptyText  { font-size: 0.875rem; line-height: 1.6; max-width: 200px; color: var(--on-surface-variant); }
+.emptyText strong { color: var(--primary); font-weight: 600; }
+
+.error {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 16px;
+  background: var(--error-container);
+  border: 1px solid rgba(186, 26, 26, 0.2);
+  border-radius: var(--radius-md);
+  margin: 16px;
+  color: var(--on-error-container);
+  font-size: 0.875rem;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  animation: slideUp var(--mid) var(--ease);
+}
+
+/* ── Header ──────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.headerIcon   { font-size: 1.25rem; line-height: 1; flex-shrink: 0; color: var(--primary); }
+.headerTitle  {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--on-surface);
+  margin-bottom: 2px;
+}
+.headerSub {
+  font-size: 0.8125rem;
+  color: var(--on-surface-variant);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+
+/* ── Main result ─────────────────────────────── */
+.mainResult {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px;
+  background: rgba(0, 74, 198, 0.06);
+  border: 1px solid rgba(0, 74, 198, 0.2);
+  border-radius: var(--radius-md);
+}
+.mainLabel {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--primary);
+}
+.mainValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--on-surface);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.mainOran {
+  font-size: 0.8125rem;
+  color: var(--primary);
+  font-family: var(--font-mono);
+}
+
+/* ── Skor listesi ────────────────────────────── */
+.skorList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.skorTitle {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--on-surface-variant);
+  margin-bottom: 4px;
+}
+.skorItem  { display: flex; flex-direction: column; gap: 5px; }
+.skorRow   {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.skorLabel {
+  font-size: 0.8125rem;
+  color: var(--on-surface-variant);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 160px;
+}
+.skorValue {
+  font-size: 0.8125rem;
+  font-family: var(--font-mono);
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* ── Üretim ──────────────────────────────────── */
+.uretim {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px;
+  background: rgba(80, 95, 118, 0.08);
+  border: 1px solid rgba(80, 95, 118, 0.18);
+  border-radius: var(--radius-md);
+}
+.uretimTitle {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--secondary);
+  margin-bottom: 4px;
+}
+.uretimItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+  color: var(--on-surface-variant);
+}
+.uretimAdet {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--secondary);
+}

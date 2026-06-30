@@ -1,0 +1,35 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.full { grid-column: 1 / -1; }
+
+.mlNote {
+  padding: 12px 16px;
+  background: rgba(80, 95, 118, 0.08);
+  border: 1px solid rgba(80, 95, 118, 0.18);
+  border-radius: var(--radius-md);
+  font-size: 0.8125rem;
+  color: var(--secondary);
+  margin-bottom: 16px;
+}
+
+.errorBox {
+  padding: 12px 16px;
+  background: var(--error-container);
+  border: 1px solid rgba(186, 26, 26, 0.2);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  color: var(--on-error-container);
+  margin-bottom: 16px;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--outline-variant);
+}

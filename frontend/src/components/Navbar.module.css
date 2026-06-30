@@ -1,0 +1,107 @@
+/* ── TopAppBar ────────────────────────────────── */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  background: var(--surface-container-lowest);
+  border-bottom: 1px solid var(--outline-variant);
+  box-shadow: var(--shadow-sm);
+}
+
+.inner {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: var(--lg);
+}
+
+/* ── Logo ────────────────────────────────────── */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.logoIcon {
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--primary);
+}
+.logoText {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--on-surface);
+  letter-spacing: -0.02em;
+}
+.logoAccent {
+  color: var(--primary);
+}
+
+/* ── Nav ─────────────────────────────────────── */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  color: var(--on-surface-variant);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all var(--mid) var(--ease);
+  border-bottom: 2px solid transparent;
+}
+.navLink:hover {
+  color: var(--primary);
+  background: var(--surface-container-high);
+}
+.navLink.active {
+  color: var(--primary);
+  background: rgba(0, 74, 198, 0.08);
+  border-bottom-color: var(--primary);
+  font-weight: 700;
+}
+
+.navIcon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* ── Status ──────────────────────────────────── */
+.status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-left: auto;
+  flex-shrink: 0;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(101, 109, 132, 0.08);
+  border: 1px solid var(--outline-variant);
+}
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+  animation: pulse 2s ease infinite;
+}
+.statusText {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--tertiary);
+}

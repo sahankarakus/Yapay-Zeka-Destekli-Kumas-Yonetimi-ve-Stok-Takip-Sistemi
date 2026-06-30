@@ -1,0 +1,122 @@
+.root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: var(--background);
+}
+
+.main {
+  flex: 1;
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 32px var(--container-padding);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── Page Header ─────────────────────────────── */
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.pageHeader h1 {
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.pageHeader p {
+  margin-top: 4px;
+  font-size: 0.9375rem;
+  color: var(--on-surface-variant);
+}
+
+/* ── Stat Row ────────────────────────────────── */
+.statRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+@media (max-width: 1100px) {
+  .statRow { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .statRow { grid-template-columns: 1fr; }
+}
+
+/* ── Content Area ────────────────────────────── */
+.contentArea {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 20px;
+  align-items: start;
+}
+@media (max-width: 1100px) {
+  .contentArea { grid-template-columns: 1fr; }
+}
+
+/* ── Table Section ───────────────────────────── */
+.tableSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: var(--surface-container-lowest);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Search Bar ──────────────────────────────── */
+.searchBar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid var(--outline-variant);
+  background: var(--surface-container-lowest);
+}
+.searchIcon {
+  position: absolute;
+  left: 28px;
+  font-size: 1rem;
+  pointer-events: none;
+  z-index: 1;
+  color: var(--primary);
+}
+
+/* ── ML Panel ────────────────────────────────── */
+.panel {
+  position: sticky;
+  top: 80px;
+  height: fit-content;
+}
+.panelHeader {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--outline-variant);
+  background: var(--surface-container-low);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.panelHeader h3 {
+  font-size: 0.9375rem;
+  color: var(--on-surface);
+  font-weight: 700;
+}
+.panelHeaderIcon {
+  color: var(--primary);
+  font-size: 1.25rem;
+}
+
+/* ── Top accent bar on AI panel ──────────────── */
+.aiAccentBar {
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: var(--radius-full) var(--radius-full) 0 0;
+}

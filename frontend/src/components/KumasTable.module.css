@@ -1,0 +1,126 @@
+.loading, .empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 80px 24px;
+  color: var(--on-surface-variant);
+  min-height: 300px;
+}
+.emptyIcon {
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--outline-variant);
+}
+.empty h3  { color: var(--on-surface); }
+.empty p   { font-size: 0.875rem; color: var(--on-surface-variant); }
+
+/* ── Row ─────────────────────────────────────── */
+.rowNum {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--outline);
+}
+.kumasAd {
+  font-weight: 500;
+  color: var(--on-surface);
+}
+
+/* ── Renk hücresi ────────────────────────────── */
+.renkCell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.renkDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1px solid var(--outline-variant);
+}
+
+/* ── Sort icon ───────────────────────────────── */
+.sortIcon {
+  margin-left: 4px;
+  font-size: 0.6875rem;
+  opacity: 0.55;
+}
+
+/* ── Actions ─────────────────────────────────── */
+.actions {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.dropdownMenu {
+  position: absolute;
+  left: 0;
+  right: auto;
+  top: 100%;
+  margin-top: 4px;
+  background: var(--surface-container-lowest);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+  z-index: 50;
+  min-width: 130px;
+}
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  font-size: 0.8125rem;
+  color: var(--on-surface);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  text-align: left;
+  font-family: var(--font-sans);
+}
+.dropdownItem:hover {
+  background: var(--surface-container-low);
+}
+.dropdownItem.danger {
+  color: var(--error);
+}
+.dropdownItem.danger:hover {
+  background: var(--error-container);
+}
+
+/* ── Footer ──────────────────────────────────── */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px 16px;
+  font-size: 0.8125rem;
+  color: var(--on-surface-variant);
+  border-top: 1px solid var(--outline-variant);
+  background: var(--surface-container-lowest);
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+}
+
+/* ── Delete modal ────────────────────────────── */
+.deleteModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+.deleteIcon { font-size: 2.5rem; line-height: 1; }
+.deleteModal h3 { color: var(--on-surface); }
+.deleteModal p  { color: var(--on-surface-variant); font-size: 0.9375rem; }
+.deleteActions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
