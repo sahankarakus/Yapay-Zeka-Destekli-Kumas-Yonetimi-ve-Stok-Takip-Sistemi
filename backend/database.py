@@ -12,8 +12,7 @@ from typing import Any, Generator, Optional
 # ─────────────────────────────────────────────
 # Yollar
 # ─────────────────────────────────────────────
-ROOT_DIR = Path(__file__).parent.parent
-DB_PATH = ROOT_DIR / "kumasVerileri.db"
+DB_PATH = Path(__file__).parent / "kumasVerileri.db"
 
 TABLE = "KullaniciniKumaslari"
 

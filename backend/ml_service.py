@@ -22,10 +22,10 @@ logger = logging.getLogger(__name__)
 # ─────────────────────────────────────────────
 # Yollar
 # ─────────────────────────────────────────────
-ROOT_DIR = Path(__file__).parent.parent
-MODEL_PATH = ROOT_DIR / "kumas_model_rf.pkl"
-ENCODER_PATH = ROOT_DIR / "label_encoder.pkl"
-COLUMNS_PATH = ROOT_DIR / "model_columns.pkl"
+DIR = Path(__file__).parent
+MODEL_PATH = DIR / "kumas_model_rf.pkl"
+ENCODER_PATH = DIR / "label_encoder.pkl"
+COLUMNS_PATH = DIR / "model_columns.pkl"
 
 # Eğitim sırasında silinen sütunlar
 COLUMNS_TO_DROP = [
