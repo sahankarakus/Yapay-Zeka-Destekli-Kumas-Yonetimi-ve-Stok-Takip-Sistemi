@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export",
+  basePath: "/stoktakip",
   // API isteklerini backend'e yönlendir (CORS bypass)
   async rewrites() {
     return [
