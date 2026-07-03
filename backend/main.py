@@ -150,10 +150,10 @@ def get_kumas(kumas_id: int):
 
 
 @app.post("/api/kumaslar", status_code=201, tags=["Kumaşlar"])
-def create_kumas(payload: KumasCreate, background_tasks: BackgroundTasks):
+def create_kumas(payload: KumasCreate):
     """
     Yeni kumaş ekler.
-    ML tahmini arka planda çalışır; Kullanim_Alani önce 'Bekleniyor...' olarak kaydedilir.
+    ML tahmini doğrudan yapılır ve veritabanı anında güncellenir.
     """
     data = payload.model_dump(by_alias=True)
     # alias'ı düzelt: Kumas_Likra_Yuzde → Kumas_Likra_%
@@ -162,10 +162,13 @@ def create_kumas(payload: KumasCreate, background_tasks: BackgroundTasks):
     kumas_id = db.create_kumas(data)
     row = db.get_kumas_by_id(kumas_id)
 
-    # ML tahmini arka planda
-    background_tasks.add_task(_predict_and_update, kumas_id, dict(row))
+    # ML tahminini anında yap
+    result = ml.predict_kullanim_alani(dict(row))
+    if result.get("status") == "success":
+        db.update_kullanim_alani(kumas_id, result["tahmin"])
+        row = db.get_kumas_by_id(kumas_id)  # Güncel veriyi tekrar çek
 
-    return {"id": kumas_id, "message": "Kumaş eklendi, ML tahmini işleniyor...", "data": row}
+    return {"id": kumas_id, "message": "Kumaş eklendi ve tahmin oluşturuldu.", "data": row}
 
 
 @app.delete("/api/kumaslar/{kumas_id}", tags=["Kumaşlar"])

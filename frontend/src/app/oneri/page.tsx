@@ -71,86 +71,83 @@ export default function OneriPage() {
         </div>
 
         <div className={styles.layout}>
-          {/* Filtre paneli */}
-          <aside className={styles.filterPanel}>
-            <div className="card-flat" style={{ padding: 24 }}>
-              <h3 style={{ marginBottom: 20, display: "flex", alignItems: "center", gap: 8, color: "var(--on-surface)" }}>
-                <span className="material-symbols-outlined" style={{ color: "var(--secondary)", fontSize: 20 }}>tune</span>
-                Filtreler
-              </h3>
+          {/* Filtre paneli — kompakt yatay bar */}
+          <div className={styles.filterPanel}>
+            <div className="card-flat" style={{ padding: "16px 20px" }}>
+              <div className={styles.filterBar}>
+                {/* Dropdown filtreleri */}
+                <div className={styles.filterSelects}>
+                  <div className={styles.filterField}>
+                    <label className="label">Tür</label>
+                    <select className="select" value={tur} onChange={e => setTur(e.target.value)}>
+                      <option value="">Tümü</option>
+                      {(secenekler?.tur ?? []).map(t => <option key={t}>{t}</option>)}
+                    </select>
+                  </div>
 
-              <div className={styles.filterGrid}>
-                <div className="field">
-                  <label className="label">Kumaş Türü</label>
-                  <select className="select" value={tur} onChange={e => setTur(e.target.value)}>
-                    <option value="">Tümü</option>
-                    {(secenekler?.tur ?? []).map(t => <option key={t}>{t}</option>)}
-                  </select>
-                </div>
+                  <div className={styles.filterField}>
+                    <label className="label">Likra Yönü</label>
+                    <select className="select" value={likraYonu} onChange={e => setLikraYonu(e.target.value)}>
+                      <option value="">Tümü</option>
+                      {(secenekler?.likra_yonu ?? []).map(l => <option key={l}>{l}</option>)}
+                    </select>
+                  </div>
 
-                <div className="field">
-                  <label className="label">Likra Yönü</label>
-                  <select className="select" value={likraYonu} onChange={e => setLikraYonu(e.target.value)}>
-                    <option value="">Tümü</option>
-                    {(secenekler?.likra_yonu ?? []).map(l => <option key={l}>{l}</option>)}
-                  </select>
-                </div>
+                  <div className={styles.filterField}>
+                    <label className="label">Su İtici</label>
+                    <select className="select" value={suItici} onChange={e => setSuItici(e.target.value)}>
+                      <option value="">Tümü</option>
+                      {(secenekler?.su_itici ?? []).map(s => <option key={s}>{s}</option>)}
+                    </select>
+                  </div>
 
-                <div className="field">
-                  <label className="label">Su İtici</label>
-                  <select className="select" value={suItici} onChange={e => setSuItici(e.target.value)}>
-                    <option value="">Tümü</option>
-                    {(secenekler?.su_itici ?? []).map(s => <option key={s}>{s}</option>)}
-                  </select>
-                </div>
+                  <div className={styles.filterField}>
+                    <label className="label">Dönem</label>
+                    <select className="select" value={kullanim_donemi} onChange={e => setKullanimDonemi(e.target.value)}>
+                      <option value="">Tümü</option>
+                      {(secenekler?.kullanim_donemi ?? []).map(d => <option key={d}>{d}</option>)}
+                    </select>
+                  </div>
 
-                <div className="field">
-                  <label className="label">Kullanım Dönemi</label>
-                  <select className="select" value={kullanim_donemi} onChange={e => setKullanimDonemi(e.target.value)}>
-                    <option value="">Tümü</option>
-                    {(secenekler?.kullanim_donemi ?? []).map(d => <option key={d}>{d}</option>)}
-                  </select>
-                </div>
+                  <div className={styles.filterField}>
+                    <label className="label">Kullanım Alanı</label>
+                    <select className="select" value={kullanimAlani} onChange={e => setKullanimAlani(e.target.value)}>
+                      <option value="">Tümü</option>
+                      {(secenekler?.kullanim_alani ?? []).map(a => <option key={a}>{a}</option>)}
+                    </select>
+                  </div>
 
-                <div className="field">
-                  <label className="label">Kullanım Alanı</label>
-                  <select className="select" value={kullanimAlani} onChange={e => setKullanimAlani(e.target.value)}>
-                    <option value="">Tümü</option>
-                    {(secenekler?.kullanim_alani ?? []).map(a => <option key={a}>{a}</option>)}
-                  </select>
-                </div>
+                  <div className={styles.filterField}>
+                    <label className="label">Likra %</label>
+                    <div className={styles.rangeRow}>
+                      <input className="input" type="number" placeholder="Min" value={minLikra} onChange={e => setMinLikra(e.target.value)} min={0} max={100} />
+                      <span>–</span>
+                      <input className="input" type="number" placeholder="Max" value={maxLikra} onChange={e => setMaxLikra(e.target.value)} min={0} max={100} />
+                    </div>
+                  </div>
 
-                <div className="divider" style={{ gridColumn: "1/-1" }} />
-
-                <div className={styles.rangeGroup}>
-                  <label className="label">Likra % Aralığı</label>
-                  <div className={styles.rangeRow}>
-                    <input className="input" type="number" placeholder="Min" value={minLikra} onChange={e => setMinLikra(e.target.value)} min={0} max={100} />
-                    <span>—</span>
-                    <input className="input" type="number" placeholder="Max" value={maxLikra} onChange={e => setMaxLikra(e.target.value)} min={0} max={100} />
+                  <div className={styles.filterField}>
+                    <label className="label">Gramaj</label>
+                    <div className={styles.rangeRow}>
+                      <input className="input" type="number" placeholder="Min" value={minGramaj} onChange={e => setMinGramaj(e.target.value)} min={0} />
+                      <span>–</span>
+                      <input className="input" type="number" placeholder="Max" value={maxGramaj} onChange={e => setMaxGramaj(e.target.value)} min={0} />
+                    </div>
                   </div>
                 </div>
 
-                <div className={styles.rangeGroup}>
-                  <label className="label">Gramaj (g/m²) Aralığı</label>
-                  <div className={styles.rangeRow}>
-                    <input className="input" type="number" placeholder="Min" value={minGramaj} onChange={e => setMinGramaj(e.target.value)} min={0} />
-                    <span>—</span>
-                    <input className="input" type="number" placeholder="Max" value={maxGramaj} onChange={e => setMaxGramaj(e.target.value)} min={0} />
-                  </div>
+                {/* Aksiyonlar */}
+                <div className={styles.filterActions}>
+                  <button className="btn btn-ghost" onClick={handleReset} style={{ whiteSpace: "nowrap" }}>Temizle</button>
+                  <button className="btn btn-primary" onClick={handleSearch} disabled={loading} style={{ whiteSpace: "nowrap" }}>
+                    {loading ? (<><span className="spinner" style={{ width: 16, height: 16 }} />Aranıyor...</>) : (
+                      <><span className="material-symbols-outlined" style={{ fontSize: 18 }}>search</span>Ara</>
+                    )}
+                  </button>
                 </div>
-              </div>
-
-              <div className={styles.filterActions}>
-                <button className="btn btn-ghost" onClick={handleReset}>Temizle</button>
-                <button className="btn btn-primary" onClick={handleSearch} disabled={loading}>
-                  {loading ? (<><span className="spinner" style={{ width: 16, height: 16 }} />Aranıyor...</>) : (
-                    <><span className="material-symbols-outlined" style={{ fontSize: 18 }}>search</span>Ara</>
-                  )}
-                </button>
               </div>
             </div>
-          </aside>
+          </div>
 
           {/* Sonuçlar */}
           <div className={styles.results}>

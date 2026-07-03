@@ -9,15 +9,15 @@ interface Props {
   onSuccess: () => void;
 }
 
-const EMPTY: KumasCreate = {
+const EMPTY: any = {
   Kumas_Ad: "",
   Kumas_Tur: "",
   Kumas_Renk: "",
-  "Kumas_Likra_%": 0,
+  "Kumas_Likra_%": "",
   Kumas_Likra_Yonu: "",
-  Kumas_Uzunluk_m: 0,
-  Kumas_En_cm: 0,
-  Kumas_Gramaj_gm2: 0,
+  Kumas_Uzunluk_m: "",
+  Kumas_En_cm: "",
+  Kumas_Gramaj_gm2: "",
   Kumas_SuItici: "",
   Kullanim_Donemi: "",
 };
@@ -42,10 +42,19 @@ export default function KumasEkleModal({ onClose, onSuccess }: Props) {
     if (!form.Kumas_Tur) return "Kumaş türü seçin.";
     if (!form.Kumas_Renk) return "Renk seçin.";
     if (!form.Kumas_Likra_Yonu) return "Likra yönü seçin.";
-    if (form["Kumas_Likra_%"] < 0 || form["Kumas_Likra_%"] > 100) return "Likra % 0–100 arası olmalı.";
-    if (form.Kumas_Uzunluk_m <= 0) return "Uzunluk 0'dan büyük olmalı.";
-    if (form.Kumas_En_cm <= 0) return "En 0'dan büyük olmalı.";
-    if (form.Kumas_Gramaj_gm2 <= 0) return "Gramaj 0'dan büyük olmalı.";
+    
+    const likra = Number(form["Kumas_Likra_%"]);
+    if (isNaN(likra) || likra < 0 || likra > 100 || form["Kumas_Likra_%"] === "") return "Likra % 0–100 arası olmalı.";
+    
+    const uzunluk = Number(form.Kumas_Uzunluk_m);
+    if (isNaN(uzunluk) || uzunluk <= 0) return "Uzunluk 0'dan büyük olmalı.";
+    
+    const en = Number(form.Kumas_En_cm);
+    if (isNaN(en) || en <= 0) return "En 0'dan büyük olmalı.";
+    
+    const gramaj = Number(form.Kumas_Gramaj_gm2);
+    if (isNaN(gramaj) || gramaj <= 0) return "Gramaj 0'dan büyük olmalı.";
+    
     if (!form.Kumas_SuItici) return "Su iticilik seçin.";
     if (!form.Kullanim_Donemi) return "Kullanım dönemi seçin.";
     return null;
@@ -56,10 +65,18 @@ export default function KumasEkleModal({ onClose, onSuccess }: Props) {
     const err = validate();
     if (err) { setError(err); return; }
 
+    const payload: KumasCreate = {
+      ...form,
+      "Kumas_Likra_%": Number(form["Kumas_Likra_%"]),
+      Kumas_Uzunluk_m: Number(form.Kumas_Uzunluk_m),
+      Kumas_En_cm: Number(form.Kumas_En_cm),
+      Kumas_Gramaj_gm2: Number(form.Kumas_Gramaj_gm2),
+    };
+
     setSaving(true);
     setError(null);
     try {
-      await api.createKumas(form);
+      await api.createKumas(payload);
       onSuccess();
       onClose();
     } catch (ex: unknown) {
@@ -70,8 +87,8 @@ export default function KumasEkleModal({ onClose, onSuccess }: Props) {
   }
 
   return (
-    <div className="overlay" onClick={onClose}>
-      <div className="modal" onClick={e => e.stopPropagation()}>
+    <div className="overlay">
+      <div className="modal">
         <div className="modal-header">
           <h2>✚ Yeni Kumaş Ekle</h2>
           <button className="btn btn-ghost btn-icon" onClick={onClose}>✕</button>
@@ -119,7 +136,7 @@ export default function KumasEkleModal({ onClose, onSuccess }: Props) {
                 max={100}
                 step={0.1}
                 value={form["Kumas_Likra_%"]}
-                onChange={e => set("Kumas_Likra_%", parseFloat(e.target.value) || 0)}
+                onChange={e => set("Kumas_Likra_%", e.target.value)}
               />
             </div>
 
@@ -140,8 +157,8 @@ export default function KumasEkleModal({ onClose, onSuccess }: Props) {
                 type="number"
                 min={0}
                 step={0.1}
-                value={form.Kumas_Uzunluk_m || ""}
-                onChange={e => set("Kumas_Uzunluk_m", parseFloat(e.target.value) || 0)}
+                value={form.Kumas_Uzunluk_m}
+                onChange={e => set("Kumas_Uzunluk_m", e.target.value)}
               />
             </div>
 
@@ -153,8 +170,8 @@ export default function KumasEkleModal({ onClose, onSuccess }: Props) {
                 type="number"
                 min={0}
                 step={0.5}
-                value={form.Kumas_En_cm || ""}
-                onChange={e => set("Kumas_En_cm", parseFloat(e.target.value) || 0)}
+                value={form.Kumas_En_cm}
+                onChange={e => set("Kumas_En_cm", e.target.value)}
               />
             </div>
 
@@ -166,8 +183,8 @@ export default function KumasEkleModal({ onClose, onSuccess }: Props) {
                 type="number"
                 min={0}
                 step={1}
-                value={form.Kumas_Gramaj_gm2 || ""}
-                onChange={e => set("Kumas_Gramaj_gm2", parseFloat(e.target.value) || 0)}
+                value={form.Kumas_Gramaj_gm2}
+                onChange={e => set("Kumas_Gramaj_gm2", e.target.value)}
               />
             </div>
 

@@ -12,21 +12,19 @@ from pydantic import BaseModel, Field, field_validator
 # ─────────────────────────────────────────────
 
 KUMAS_TURLERI = [
-    "Viskon", "Polyester", "Pamuk", "Denim", "Örme", "Dokuma",
-    "İpek", "Yün", "Akrilik", "Naylon", "Keten", "Modal", "Bambu",
+    "Polyester", "Pamuk", "Naylon", "Yun", "Ipek", "Keten", "Kot", "Viskon"
 ]
 
 RENKLER = [
-    "Beyaz", "Siyah", "Kırmızı", "Mavi", "Yeşil", "Sarı",
-    "Mor", "Turuncu", "Pembe", "Gri", "Kahverengi", "Lacivert",
-    "Bordo", "Bej", "Krem", "Turkuaz",
+    "Bej", "Krem", "Turuncu", "Beyaz", "Pembe", "Gri", "Lacivert",
+    "Sari", "Mavi", "Kirmizi", "Siyah", "Kahverengi", "Yesil"
 ]
 
-LIKRA_YONLERI = ["2 Yönlü", "4 Yönlü", "Yok"]
+LIKRA_YONLERI = ["Enine", "Boyuna", "Her Iki Yonde", "Yok"]
 
-SU_ITICI_SECENEKLER = ["Evet", "Hayır"]
+SU_ITICI_SECENEKLER = ["Hayir", "Evet"]
 
-KULLANIM_DONEMLERI = ["İlkbahar/Yaz", "Sonbahar/Kış", "4 Mevsim"]
+KULLANIM_DONEMLERI = ["Dort Mevsim", "Yazlik", "Kislik"]
 
 KULLANIM_ALANLARI = [
     "Elbise", "Spor Tisort", "Gomlek", "Etek", "Pantolon",
