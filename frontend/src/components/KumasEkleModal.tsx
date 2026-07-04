@@ -44,16 +44,16 @@ export default function KumasEkleModal({ onClose, onSuccess }: Props) {
     if (!form.Kumas_Likra_Yonu) return "Likra yönü seçin.";
     
     const likra = Number(form["Kumas_Likra_%"]);
-    if (isNaN(likra) || likra < 0 || likra > 100 || form["Kumas_Likra_%"] === "") return "Likra % 0–100 arası olmalı.";
+    if (isNaN(likra) || likra < 0 || likra > 100 || String(form["Kumas_Likra_%"]) === "") return "Likra % 0–100 arası olmalı.";
     
     const uzunluk = Number(form.Kumas_Uzunluk_m);
-    if (isNaN(uzunluk) || uzunluk <= 0) return "Uzunluk 0'dan büyük olmalı.";
+    if (isNaN(uzunluk) || uzunluk <= 0 || String(form.Kumas_Uzunluk_m) === "") return "Uzunluk 0'dan büyük olmalı.";
     
     const en = Number(form.Kumas_En_cm);
-    if (isNaN(en) || en <= 0) return "En 0'dan büyük olmalı.";
+    if (isNaN(en) || en <= 0 || String(form.Kumas_En_cm) === "") return "En 0'dan büyük olmalı.";
     
     const gramaj = Number(form.Kumas_Gramaj_gm2);
-    if (isNaN(gramaj) || gramaj <= 0) return "Gramaj 0'dan büyük olmalı.";
+    if (isNaN(gramaj) || gramaj <= 0 || String(form.Kumas_Gramaj_gm2) === "") return "Gramaj 0'dan büyük olmalı.";
     
     if (!form.Kumas_SuItici) return "Su iticilik seçin.";
     if (!form.Kullanim_Donemi) return "Kullanım dönemi seçin.";
